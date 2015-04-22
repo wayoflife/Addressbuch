@@ -42,6 +42,7 @@ public class AddressTest {
 		ad.save();
 		ad.read(ad.getId());
 		assertEquals("Hans-Peter", ad.getVorname());
+		new AddressList().delete(ad.getId());
 	}
 	
 	@Test

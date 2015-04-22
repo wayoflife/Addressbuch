@@ -61,7 +61,7 @@ public class AddressList {
 		Connection conn = DriverManager
 				.getConnection("jdbc:mysql://localhost/addressbook?user=root&password=password");
 		
-		PreparedStatement ps = conn.prepareStatement("DELETE FROM addressbook.address WHERE id = "+ id);
+		PreparedStatement ps = conn.prepareStatement("DELETE FROM address WHERE id = "+ id);
 		ps.execute();
 		
 		ps.close();
