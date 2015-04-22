@@ -39,7 +39,7 @@ public class AddressTest {
 		ad.setName("Schmidt");
 		ad.setAddressform("Fräulein");
 		ad.setCity("Musterstadt");
-		ad.save();
+		assertEquals(true, ad.save());
 		ad.read(ad.getId());
 		assertEquals("Hans-Peter", ad.getVorname());
 		new AddressList().delete(ad.getId());

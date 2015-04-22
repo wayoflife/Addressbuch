@@ -7,13 +7,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 
 public class Address {
 
-	private int id, number;
+	private int id;
+	private Integer number;
 	private String name, vorname, addressform, email, phone, mobile, street, city,
 			postcode, country;
 	private Date birthday;
@@ -50,7 +52,7 @@ public class Address {
 			phone = rs.getString("phone");
 			mobile = rs.getString("mobile");
 			street = rs.getString("street");
-			number = rs.getInt("number");
+			number = rs.getObject("number") != null ? rs.getInt("number") : null;
 			city = rs.getString("city");
 			postcode = rs.getString("postcode");
 			country = rs.getString("country");
@@ -141,7 +143,11 @@ public class Address {
 		ps.setString(5, phone);
 		ps.setString(6, mobile);
 		ps.setString(7, street);
-		ps.setInt(8, number);
+		if (number != null) {
+			ps.setInt(8, number.intValue());
+		} else {
+			ps.setNull(8, Types.NULL);
+		}
 		ps.setString(9, city);
 		ps.setString(10, postcode);
 		ps.setString(11, country);
@@ -157,7 +163,10 @@ public class Address {
 	}
 
 	public String getNumber() {
-		return number + "";
+		if (number != null) {
+			return number.toString();
+		}
+		return "";
 	}
 
 	public void setNumber(int number) {

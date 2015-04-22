@@ -60,7 +60,7 @@ public class Save extends HttpServlet {
 		ad.setMobile(rq.getParameter("mobile"));
 		ad.setName(rq.getParameter("name"));
 		if (rq.getParameter("number") != null) {
-			ad.setNumber(Integer.parseInt(rq.getParameter("number")));
+			ad.setNumber(Integer.valueOf(rq.getParameter("number")));
 		}
 		ad.setPhone(rq.getParameter("phone"));
 		ad.setPostcode(rq.getParameter("postcode"));

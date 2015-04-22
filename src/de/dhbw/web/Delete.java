@@ -43,7 +43,7 @@ public class Delete extends HttpServlet {
 			System.out.println("parameter: " + attribute);
 			int id = Integer.parseInt(attribute);
 			new AddressList().delete(id);
-			String referer = request.getHeader("Referer");
+			String referer = "/Adressbuch/List.jsp";
 			System.out.println("Eintrag wurde gelöscht, id: " + id);
 			System.out.println("Keine exception: " + referer);
 			response.sendRedirect(referer);

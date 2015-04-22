@@ -16,9 +16,14 @@
 	boolean erfolgreichGeladen = false;
 	if (request.getParameter("id") != null && !request.getParameter("id").isEmpty()) {
 		erfolgreichGeladen = adresse.read(Integer.parseInt(request.getParameter("id")));
+		pageContext.setAttribute("ad", adresse);
 	}
 	pageContext.setAttribute("geladen", erfolgreichGeladen);
 %>
+
+<form action="List.jsp">
+	<input type="submit" value="Zurück zum Adressbuch">
+</form>
 
 <c:choose>
 	<c:when test="${geladen}">
@@ -26,79 +31,87 @@
 		<tr>
 			<td>Anrede</td>
 			<td>
-				<jsp:getProperty name="adresse" property="addressform"/>
+				${ad.addressform}
 			</td>
 		</tr>
 		<tr>
 			<td>Vorname</td>
 			<td>
-				<jsp:getProperty name="adresse" property="vorname"/>
+				${ad.vorname}
 			</td>
 		</tr>
 		<tr>
 			<td>Nachname</td>
 			<td>
-				<jsp:getProperty name="adresse" property="name"/>
+				${ad.name}
 			</td>
 		</tr>
 		<tr>
 			<td>E-Mail-Adresse</td>
 			<td>
-				<jsp:getProperty name="adresse" property="email"/>
+				${ad.email}
 			</td>
 		</tr>
 		<tr>
 			<td>Straße</td>
 			<td>
-				<jsp:getProperty name="adresse" property="street"/>
+				${ad.street}
 			</td>
 		</tr>
 		<tr>
 			<td>Hausnummer</td>
 			<td>
-				<jsp:getProperty name="adresse" property="number"/>
+				${ad.number}
 			</td>
 		</tr>
 		<tr>
 			<td>Postleitzahl</td>
 			<td>
-				<jsp:getProperty name="adresse" property="postcode"/>
+				${ad.postcode}
 			</td>
 		</tr>
 		<tr>
 			<td>Ort</td>
 			<td>
-				<jsp:getProperty name="adresse" property="city"/>
+				${ad.city}
 			</td>
 		</tr>
 		<tr>
 			<td>Land</td>
 			<td>
-				<jsp:getProperty name="adresse" property="country"/>
+				${ad.country}
 			</td>
 		</tr>
 		<tr>
 			<td>Festnetz</td>
 			<td>
-				<jsp:getProperty name="adresse" property="phone"/>
+				${ad.phone}
 			</td>
 		</tr>
 		<tr>
 			<td>Handy</td>
 			<td>
-				<jsp:getProperty name="adresse" property="mobile"/>
+				${ad.mobile}
 			</td>
 		</tr>
 		<tr>
 			<td>Geburtstag</td>
 			<td>
-				<jsp:getProperty name="adresse" property="birthday"/>
+				${ad.birthday}
 			</td>
 		</tr>
 	</table>
+	
+	<form action="Form.jsp" method="GET">
+		<button type="submit" name="id" value="${ad.id}">Bearbeiten</button>
+	</form>
+	<form action="Delete" method="POST">
+		<button type="submit" name="id" value="${ad.id}">Löschen</button>
+	</form>
+				
 	</c:when>
 	<c:otherwise>
-		<c:redirect url="/List.jsp"/>
+		Leider ist das Laden der Adresse fehlgeschlagen!
 	</c:otherwise>
 </c:choose>
 

@@ -3,12 +3,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Eingabeformular</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Eingabeformular</title>
+	<jsp:useBean id="adresse" class="de.dhbw.web.Address" scope="page"/>
+	<jsp:setProperty name="adresse" property="id" param="id"/>
 </head>
 <body>
 
 <h2>Eingabeformular</h2>
+
+<%
+	boolean erfolgreichGeladen = false;
+	if (request.getParameter("id") != null && !request.getParameter("id").isEmpty()) {
+		erfolgreichGeladen = adresse.read(Integer.parseInt(request.getParameter("id")));
+		pageContext.setAttribute("ad", adresse);
+	}
+	pageContext.setAttribute("geladen", erfolgreichGeladen);
+%>
 
 <form method="POST" action="Save">
 	<table>
