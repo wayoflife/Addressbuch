@@ -39,7 +39,7 @@ public class Save extends HttpServlet {
 		ad.setStreet(rq.getParameter("street"));
 		ad.setVorname(rq.getParameter("vorname"));
 		if(ad.save()){
-			String referer = "/Adressbuch/List.jsp";
+			String referer = "/Adressbuch/Detail.jsp?id=" + ad.getId();
 			System.out.println("Speichern erfolgreich: " + referer);
 			rs.sendRedirect(referer);
 		} else {
@@ -73,7 +73,7 @@ public class Save extends HttpServlet {
 		ad.setStreet(rq.getParameter("street"));
 		ad.setVorname(rq.getParameter("vorname"));
 		if(ad.save()){
-			String referer = "/Adressbuch/List.jsp";
+			String referer = "/Adressbuch/Detail.jsp?id=" + ad.getId();
 			System.out.println("Speichern erfolgreich: " + referer);
 			rs.sendRedirect(referer);
 		} else {

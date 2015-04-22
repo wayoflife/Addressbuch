@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -93,9 +94,20 @@
 		</tr>
 	</table>
 	<button type="submit" name="id" value="${ad.id}">Speichern</button>
-<%-- 	<input name="id" value="${ad.id}"> --%>
-<!-- 	<input type="submit" value="Speichern"> -->
 </form>
+
+<c:choose>
+<c:when test="${not empty ad.id}">
+<form action="Detail.jsp" method="GET">
+	<button type="submit" name="id" value="${ad.id}">Abbrechen</button>
+</form>
+</c:when>
+<c:otherwise>
+<form action="List.jsp">
+	<input type="submit" value="Abbrechen">
+</form>
+</c:otherwise>
+</c:choose>
 
 </body>
 </html>
