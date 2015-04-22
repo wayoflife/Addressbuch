@@ -26,73 +26,75 @@
 		<tr>
 			<td>Anrede</td>
 			<td>
-				<input type="text" name="addressform"/>
+				<input type="text" name="addressform" value="${ad.addressform}"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Vorname</td>
 			<td>
-				<input type="text" name="vorname"/>
+				<input type="text" name="vorname" value="${ad.vorname}"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Nachname</td>
 			<td>
-				<input type="text" name="name"/>
+				<input type="text" name="name" value="${ad.name}"/>
 			</td>
 		</tr>
 		<tr>
 			<td>E-Mail-Adresse</td>
 			<td>
-				<input type="text" name="email"/>
+				<input type="text" name="email" value="${ad.email}"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Straße</td>
 			<td>
-				<input type="text" name="street"/>
+				<input type="text" name="street" value="${ad.street}"/>
 			</td>
 			<td>Hausnummer</td>
 			<td>
-				<input type="text" name=number/>
+				<input type="text" name=number value="${ad.number}"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Postleitzahl</td>
 			<td>
-				<input type="text" name="postcode"/>
+				<input type="text" name="postcode" value="${ad.postcode}"/>
 			</td>
 			<td>Ort</td>
 			<td>
-				<input type="text" name="city"/>
+				<input type="text" name="city" value="${ad.city}"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Land</td>
 			<td>
-				<input type="text" name="country"/>
+				<input type="text" name="country" value="${ad.country}"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Festnetz</td>
 			<td>
-				<input type="text" name="phone"/>
+				<input type="text" name="phone" value="${ad.phone}"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Handy</td>
 			<td>
-				<input type="text" name="mobile"/>
+				<input type="text" name="mobile" value="${ad.mobile}"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Geburtstag</td>
 			<td>
-				<input type="text" name="birthday"/>
+				<input type="text" name="birthday" value="${ad.birthday}"/>
 			</td>
 		</tr>
 	</table>
-	<input type="submit" value="Speichern">
+	<button type="submit" name="id" value="${ad.id}">Speichern</button>
+<%-- 	<input name="id" value="${ad.id}"> --%>
+<!-- 	<input type="submit" value="Speichern"> -->
 </form>
 
 </body>

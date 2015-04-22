@@ -19,6 +19,9 @@ public class Save extends HttpServlet {
 
 	protected void doGet(HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {
 		Address ad = new Address();
+		if (rq.getParameter("id") != null) {
+			ad.setId(Integer.parseInt(rq.getParameter("id")));
+		}
 		try {
 			ad.setBirthday(rq.getParameter("birthday"));
 		} catch (ParseException e) {
@@ -36,7 +39,7 @@ public class Save extends HttpServlet {
 		ad.setStreet(rq.getParameter("street"));
 		ad.setVorname(rq.getParameter("vorname"));
 		if(ad.save()){
-			String referer = "/Adressbuch/List.jsp?id="+ad.getId();
+			String referer = "/Adressbuch/List.jsp";
 			System.out.println("Speichern erfolgreich: " + referer);
 			rs.sendRedirect(referer);
 		} else {
@@ -48,6 +51,9 @@ public class Save extends HttpServlet {
 
 	protected void doPost(HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {
 		Address ad = new Address();
+		if (rq.getParameter("id") != null) {
+			ad.setId(Integer.parseInt(rq.getParameter("id")));
+		}
 		try {
 			ad.setBirthday(rq.getParameter("birthday"));
 		} catch (ParseException e) {
@@ -59,7 +65,7 @@ public class Save extends HttpServlet {
 		ad.setEmail(rq.getParameter("email"));
 		ad.setMobile(rq.getParameter("mobile"));
 		ad.setName(rq.getParameter("name"));
-		if (rq.getParameter("number") != null) {
+		if (rq.getParameter("number") != null && !rq.getParameter("number").isEmpty()) {
 			ad.setNumber(Integer.valueOf(rq.getParameter("number")));
 		}
 		ad.setPhone(rq.getParameter("phone"));
@@ -67,7 +73,7 @@ public class Save extends HttpServlet {
 		ad.setStreet(rq.getParameter("street"));
 		ad.setVorname(rq.getParameter("vorname"));
 		if(ad.save()){
-			String referer = "/Adressbuch/List.jsp?id="+ad.getId();
+			String referer = "/Adressbuch/List.jsp";
 			System.out.println("Speichern erfolgreich: " + referer);
 			rs.sendRedirect(referer);
 		} else {
