@@ -1,39 +1,57 @@
 package de.dhbw.web;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class Delete
- */
 @WebServlet("/Delete")
 public class Delete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public Delete() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		try {
+			String attribute = request.getParameter("id");
+			int id = Integer.parseInt(attribute);
+			new AddressList().delete(id);
+			String referer = request.getHeader("Referer");
+			System.out.println("Eintrag wurde gelöscht, id: " + id);
+			System.out.println("Keine exception: " + referer);
+			response.sendRedirect(referer);
+		} catch (NumberFormatException ef) {
+			String referer = request.getHeader("Referer");
+			System.out.println("NumberFormatException: " + referer);
+			response.sendRedirect(referer);
+		} catch (Exception e) {
+			String referer = "/Adressbuch/List.jsp";
+			System.out.println("Sonstige Exception: " + referer);
+			response.sendRedirect(referer);
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		try {
+			String attribute = request.getParameter("id");
+			int id = Integer.parseInt(attribute);
+			new AddressList().delete(id);
+			String referer = request.getHeader("Referer");
+			System.out.println("Keine exception: " + referer);
+			response.sendRedirect(referer);
+		} catch (NumberFormatException ef) {
+			String referer = request.getHeader("Referer");
+			System.out.println("NumberFormatException: " + referer);
+			response.sendRedirect(referer);
+		} catch (Exception e) {
+			String referer = "/Adressbuch/List.jsp";
+			System.out.println("Sonstige Exception: " + referer);
+			response.sendRedirect(referer);
+		}
 	}
-
 }

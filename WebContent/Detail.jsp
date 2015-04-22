@@ -7,7 +7,7 @@
 <title>Detailansicht</title>
 </head>
 <body>
-
-
+<a href="/Adressbuch/Delete">hier klicken</a>
+<a href="/Adressbuch/Delete?id=50">hier klicken id 50</a>
 </body>
 </html>

@@ -61,6 +61,10 @@ public class Address {
 		conn.close();
 	}
 
+	/**Methode zum Speichern des Zustands der Bean in der Datenbank
+	 * 
+	 * @return true wenn erfolgreich gespeichert wurde, false bei Fehler
+	 */
 	public boolean save() {
 		try {
 
