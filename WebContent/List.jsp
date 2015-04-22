@@ -8,9 +8,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Listenansicht</title>
-<jsp:useBean id="addressListKlasse" class="de.dhbw.web.AddressList" scope="page"/>
-<%-- <jsp:setProperty name="addressListKlasse" property="*"/> --%>
+	<title>Listenansicht</title>
+	<jsp:useBean id="addressListKlasse" class="de.dhbw.web.AddressList" scope="page"/>
+	<jsp:setProperty name="addressListKlasse" property="suchtext" param="suche"/>
 </head>
 <body>
 
@@ -21,6 +21,10 @@
 	pageContext.setAttribute("adressen", list);
 %>
 
+<form method="GET">
+	<label for="suche">Suche nach:</label>
+	<input type="search" id="sucheNach" name="suche" placeholder="Name, nach dem gesucht werden soll"/>
+</form>
 <table>
 	<tr>
 		<th>Vorname</th>
