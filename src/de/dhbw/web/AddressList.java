@@ -11,7 +11,7 @@ import java.util.List;
 
 public class AddressList {
 	
-	private String suchtext;
+	private String suchtext = "";
 	private List<Address> addressListe;
 	
 	public AddressList() {

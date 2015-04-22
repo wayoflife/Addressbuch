@@ -1,3 +1,5 @@
+<%@page import="de.dhbw.web.Address"%>
+<%@page import="java.util.List"%>
 <%@page import="de.dhbw.web.AddressList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -7,22 +9,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Listenansicht</title>
+<jsp:useBean id="addressListKlasse" class="de.dhbw.web.AddressList" scope="page"/>
+<%-- <jsp:setProperty name="addressListKlasse" property="*"/> --%>
 </head>
 <body>
 
 <h1>Unser supergeiles Addressbuch, yay</h1>
 
-<jsp:useBean id="addressList" class="de.dhbw.web.AddressList"></jsp:useBean>
-<jsp:getProperty property="AddressListe" name="addressList"/>
 <%
-	AddressList list = new AddressList();
-	pageContext.setAttribute("addressliste", list);
+	List<Address> list = addressListKlasse.getAddressListe();
+	pageContext.setAttribute("adressen", list);
 %>
 
 <table>
-<c:forEach var="ad" items="${addressliste.AddressListe}">
 	<tr>
-	<td>${ad.name}</td><td>${ad.vorname}</td><td>${ad.email}</td>
+		<th>Vorname</th>
+		<th>Nachname</th>
+		<th>E-Mail-Adresse</th>
+	</tr>
+<c:forEach items="${adressen}" var="ad">
+	<tr>
+	<td>${ad.vorname}</td><td>${ad.name}</td><td>${ad.email}</td>
 	</tr>
 </c:forEach>
 </table>
