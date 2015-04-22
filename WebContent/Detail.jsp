@@ -7,7 +7,18 @@
 <title>Detailansicht</title>
 </head>
 <body>
-<a href="/Adressbuch/Delete">hier klicken</a>
-<a href="/Adressbuch/Delete?id=50">hier klicken id 50</a>
+
+<a href="/Adressbuch/Delete">hier klicken, kein parameter</a><br>
+
+<form name="deleteidget" action="Delete" method="get">
+    <input type="text" name="id" value="123"/>
+    <input type="submit" value="delete id get"/>
+</form>
+
+<form name="deleteidpost" action="Delete" method="post">
+    <input type="text" name="id" value="123"/>
+    <input type="submit" value="delete id post"/>
+</form>
+
 </body>
 </html>

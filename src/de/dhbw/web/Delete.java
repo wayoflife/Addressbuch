@@ -19,6 +19,7 @@ public class Delete extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			String attribute = request.getParameter("id");
+			System.out.println("parameter: " + attribute);
 			int id = Integer.parseInt(attribute);
 			new AddressList().delete(id);
 			String referer = request.getHeader("Referer");
@@ -39,9 +40,11 @@ public class Delete extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			String attribute = request.getParameter("id");
+			System.out.println("parameter: " + attribute);
 			int id = Integer.parseInt(attribute);
 			new AddressList().delete(id);
 			String referer = request.getHeader("Referer");
+			System.out.println("Eintrag wurde gelöscht, id: " + id);
 			System.out.println("Keine exception: " + referer);
 			response.sendRedirect(referer);
 		} catch (NumberFormatException ef) {
