@@ -1,6 +1,7 @@
 package de.dhbw.web;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,29 +17,61 @@ public class Save extends HttpServlet {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {
 		Address ad = new Address();
+		try {
+			ad.setBirthday(rq.getParameter("birthday"));
+		} catch (ParseException e) {
+			//TODO ändern?
+		}
+		ad.setAddressform(rq.getParameter("addressform"));
+		ad.setCity(rq.getParameter("city"));
+		ad.setCountry(rq.getParameter("country"));
+		ad.setEmail(rq.getParameter("email"));
+		ad.setMobile(rq.getParameter("mobile"));
+		ad.setName(rq.getParameter("name"));
+		ad.setNumber(Integer.parseInt(rq.getParameter("number")));
+		ad.setPhone(rq.getParameter("phone"));
+		ad.setPostcode(rq.getParameter("postcode"));
+		ad.setStreet(rq.getParameter("street"));
+		ad.setVorname(rq.getParameter("vorname"));
 		if(ad.save()){
 			String referer = "/Adressbuch/List.jsp?id="+ad.getId();
 			System.out.println("Speichern erfolgreich: " + referer);
-			response.sendRedirect(referer);
+			rs.sendRedirect(referer);
 		} else {
-			String referer = request.getHeader("Referer");
+			String referer = rq.getHeader("Referer");
 			System.out.println("Speichern nicht erfolgreich: " + referer);
-			response.sendRedirect(referer);
+			rs.sendRedirect(referer);
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {
 		Address ad = new Address();
+		try {
+			ad.setBirthday(rq.getParameter("birthday"));
+		} catch (ParseException e) {
+			//TODO ändern?
+		}
+		ad.setAddressform(rq.getParameter("addressform"));
+		ad.setCity(rq.getParameter("city"));
+		ad.setCountry(rq.getParameter("country"));
+		ad.setEmail(rq.getParameter("email"));
+		ad.setMobile(rq.getParameter("mobile"));
+		ad.setName(rq.getParameter("name"));
+		ad.setNumber(Integer.parseInt(rq.getParameter("number")));
+		ad.setPhone(rq.getParameter("phone"));
+		ad.setPostcode(rq.getParameter("postcode"));
+		ad.setStreet(rq.getParameter("street"));
+		ad.setVorname(rq.getParameter("vorname"));
 		if(ad.save()){
 			String referer = "/Adressbuch/List.jsp?id="+ad.getId();
 			System.out.println("Speichern erfolgreich: " + referer);
-			response.sendRedirect(referer);
+			rs.sendRedirect(referer);
 		} else {
-			String referer = request.getHeader("Referer");
+			String referer = rq.getHeader("Referer");
 			System.out.println("Speichern nicht erfolgreich: " + referer);
-			response.sendRedirect(referer);
+			rs.sendRedirect(referer);
 		}
 	}
 }
