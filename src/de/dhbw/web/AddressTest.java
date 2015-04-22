@@ -14,7 +14,7 @@ public class AddressTest {
 	}
 
 	@Test
-	public void DatenLaden() throws Exception {
+	public void datenLaden() throws Exception {
 		Address ad = new Address();
 		ad.read(1);
 		assertEquals(1, ad.getId());

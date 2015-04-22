@@ -254,11 +254,19 @@ public class Address {
 	}
 
 	public String getBirthday() {
-		return birthday.toString();
+		String birthdayGerman = "";
+		if (birthday != null) {
+			String birthdayString = birthday.toString();
+			String[] birthdayArray = birthdayString.split("-");
+			birthdayGerman = birthdayArray[2] + "." + 
+					   		 birthdayArray[1] + "." + 
+					   		 birthdayArray[0];
+		}
+		return birthdayGerman;
 	}
 
 	public void setBirthday(String birthday) throws ParseException {
-		SimpleDateFormat format = new SimpleDateFormat("ddMMyyyy");
+		SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
 		java.util.Date parsed = format.parse(birthday);
 		this.birthday = new Date(parsed.getTime());
 	}

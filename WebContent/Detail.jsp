@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<h2>Eingabeformular</h2>
+
 <%
 	boolean erfolgreichGeladen = false;
 	if (request.getParameter("id") != null && !request.getParameter("id").isEmpty()) {

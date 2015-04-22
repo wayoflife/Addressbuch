@@ -19,13 +19,17 @@ public class Save extends HttpServlet {
 
 	protected void doGet(HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {
 		Address ad = new Address();
-		if (rq.getParameter("id") != null) {
+		if (rq.getParameter("id") != null
+				&& !rq.getParameter("id").isEmpty()) {
 			ad.setId(Integer.parseInt(rq.getParameter("id")));
 		}
-		try {
-			ad.setBirthday(rq.getParameter("birthday"));
-		} catch (ParseException e) {
-			//TODO ändern?
+		if (rq.getParameter("birthday") != null
+				&& !rq.getParameter("birthday").isEmpty()) {
+			try {
+				ad.setBirthday(rq.getParameter("birthday"));
+			} catch (ParseException e) {
+				//TODO ändern?
+			}
 		}
 		ad.setAddressform(rq.getParameter("addressform"));
 		ad.setCity(rq.getParameter("city"));
@@ -51,13 +55,17 @@ public class Save extends HttpServlet {
 
 	protected void doPost(HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {
 		Address ad = new Address();
-		if (rq.getParameter("id") != null) {
+		if (rq.getParameter("id") != null
+				&& !rq.getParameter("id").isEmpty()) {
 			ad.setId(Integer.parseInt(rq.getParameter("id")));
 		}
-		try {
-			ad.setBirthday(rq.getParameter("birthday"));
-		} catch (ParseException e) {
-			//TODO ändern?
+		if (rq.getParameter("birthday") != null
+				&& !rq.getParameter("birthday").isEmpty()) {
+			try {
+				ad.setBirthday(rq.getParameter("birthday"));
+			} catch (ParseException e) {
+				//TODO ändern?
+			}
 		}
 		ad.setAddressform(rq.getParameter("addressform"));
 		ad.setCity(rq.getParameter("city"));
