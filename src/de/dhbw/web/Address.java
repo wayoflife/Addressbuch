@@ -31,7 +31,7 @@ public class Address {
 	 * @throws InstantiationException
 	 * @throws SQLException
 	 */
-	public void read(int id) throws InstantiationException,
+	public boolean read(int id) throws InstantiationException,
 			IllegalAccessException, ClassNotFoundException, SQLException {
 		// felder befüllen aus datenbank
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -40,6 +40,7 @@ public class Address {
 		Statement stmt = conn.createStatement();
 		String sql_query = "SELECT * FROM addressbook.address WHERE id = " + id;
 		ResultSet rs = stmt.executeQuery(sql_query);
+		boolean geladen = false;
 		if (rs.next()) {
 			this.id = rs.getInt("id");
 			name = rs.getString("name");
@@ -54,11 +55,13 @@ public class Address {
 			postcode = rs.getString("postcode");
 			country = rs.getString("country");
 			birthday = rs.getDate("birthday");
+			geladen = true;
 		}
 
 		rs.close();
 		stmt.close();
 		conn.close();
+		return geladen;
 	}
 
 	/**Methode zum Speichern des Zustands der Bean in der Datenbank
