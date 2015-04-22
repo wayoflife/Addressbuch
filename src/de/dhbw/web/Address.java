@@ -110,7 +110,7 @@ public class Address {
 				ps.executeUpdate();
 				ResultSet keys = ps.getGeneratedKeys();
 				if (keys.next()) {
-					this.id = keys.getInt("id");
+					this.id = keys.getInt(1);
 				}
 				ps.close();
 				keys.close();
@@ -251,4 +251,8 @@ public class Address {
 		this.birthday = birthday;
 	}
 
+	@Override
+	public String toString() {
+		return id + " " + name + " " + vorname;
+	}
 }
