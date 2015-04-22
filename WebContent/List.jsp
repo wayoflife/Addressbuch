@@ -23,8 +23,9 @@
 
 <form method="GET">
 	<label for="suche">Suche nach:</label>
-	<input type="search" id="sucheNach" name="suche" placeholder="Name, nach dem gesucht werden soll"/>
+	<input type="search" name="suche" placeholder="Name, nach dem gesucht werden soll"/>
 </form>
+<br>
 <table>
 	<tr>
 		<th>Vorname</th>

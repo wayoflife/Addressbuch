@@ -4,9 +4,85 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Eingabeformular</title>
 </head>
 <body>
+
+<h2>Eingabeformular</h2>
+
+<form method="POST" action="Save">
+	<table>
+		<tr>
+			<td>Anrede</td>
+			<td>
+				<input type="text" name="addressform"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Vorname</td>
+			<td>
+				<input type="text" name="vorname"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Nachname</td>
+			<td>
+				<input type="text" name="name"/>
+			</td>
+		</tr>
+		<tr>
+			<td>E-Mail-Adresse</td>
+			<td>
+				<input type="text" name="email"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Straße</td>
+			<td>
+				<input type="text" name="street"/>
+			</td>
+			<td>Hausnummer</td>
+			<td>
+				<input type="text" name=number/>
+			</td>
+		</tr>
+		<tr>
+			<td>Postleitzahl</td>
+			<td>
+				<input type="text" name="postcode"/>
+			</td>
+			<td>Ort</td>
+			<td>
+				<input type="text" name="city"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Land</td>
+			<td>
+				<input type="text" name="country"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Festnetz</td>
+			<td>
+				<input type="text" name="phone"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Handy</td>
+			<td>
+				<input type="text" name="mobile"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Geburtstag</td>
+			<td>
+				<input type="text" name="birthday"/>
+			</td>
+		</tr>
+	</table>
+	<input type="submit" value="Speichern">
+</form>
 
 </body>
 </html>

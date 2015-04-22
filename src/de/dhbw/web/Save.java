@@ -59,7 +59,9 @@ public class Save extends HttpServlet {
 		ad.setEmail(rq.getParameter("email"));
 		ad.setMobile(rq.getParameter("mobile"));
 		ad.setName(rq.getParameter("name"));
-		ad.setNumber(Integer.parseInt(rq.getParameter("number")));
+		if (rq.getParameter("number") != null) {
+			ad.setNumber(Integer.parseInt(rq.getParameter("number")));
+		}
 		ad.setPhone(rq.getParameter("phone"));
 		ad.setPostcode(rq.getParameter("postcode"));
 		ad.setStreet(rq.getParameter("street"));
