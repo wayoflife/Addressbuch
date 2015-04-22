@@ -23,21 +23,49 @@
 
 <form method="GET">
 	<label for="suche">Suche nach:</label>
-	<input type="search" name="suche" placeholder="Name, nach dem gesucht werden soll"/>
+	<input type="search" name="suche"/>
+</form>
+<form action="List.jsp">
+	<input type="submit" value="Suche zurücksetzen"/>
 </form>
 <br>
-<table>
-	<tr>
-		<th>Vorname</th>
-		<th>Nachname</th>
-		<th>E-Mail-Adresse</th>
-	</tr>
-<c:forEach items="${adressen}" var="ad">
-	<tr>
-	<td>${ad.vorname}</td><td>${ad.name}</td><td>${ad.email}</td>
-	</tr>
-</c:forEach>
-</table>
+<c:choose>
+	<c:when test="${!empty adressen}">
+	<table>
+		<tr>
+			<th>Vorname</th>
+			<th>Nachname</th>
+			<th>E-Mail-Adresse</th>
+		</tr>
+	<c:forEach items="${adressen}" var="ad">
+		<tr>
+			<td>${ad.vorname}</td>
+			<td>${ad.name}</td>
+			<td>${ad.email}</td>
+			<td>
+				<form action="Detail.jsp" method="GET">
+					<button type="submit" name="id" value="${ad.id}">Detailansicht</button>
+				</form>
+			</td>
+			<td>
+				<form action="Delete" method="POST">
+					<button type="submit" name="id" value="${ad.id}">Löschen</button>
+				</form>
+			</td>
+		</tr>
+	</c:forEach>
+	</table>
+	</c:when>
+	<c:otherwise>
+	Es konnten leider keine Ergebnisse gefunden werden!
+	</c:otherwise>
+</c:choose>
+
+<br>
+
+<form action="Form.jsp">
+	<input type="submit" value="Adresse hinzufügen">
+</form>
 
 </body>
 </html>
