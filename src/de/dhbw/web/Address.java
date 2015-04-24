@@ -23,7 +23,8 @@ public class Address {
 	public Address() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	
 	/**
 	 * lädt die daten der entsprechenden Adresse in die initialisierte Bean
 	 * 
@@ -34,11 +35,26 @@ public class Address {
 	 * @throws SQLException
 	 */
 	public boolean read(int id) throws InstantiationException,
-			IllegalAccessException, ClassNotFoundException, SQLException {
-		// felder befüllen aus datenbank
+	IllegalAccessException, ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
 		Connection conn = DriverManager
 				.getConnection("jdbc:mysql://localhost/addressbook?user=root&password=password");
+		return read(id, conn);
+	}
+	
+	/**
+	 * lädt die daten der entsprechenden Adresse in die initialisierte Bean
+	 * 
+	 * @param id
+	 * @throws ClassNotFoundException
+	 * @throws IllegalAccessException
+	 * @throws InstantiationException
+	 * @throws SQLException
+	 */
+	public boolean read(int id, Connection conn) throws InstantiationException,
+			IllegalAccessException, ClassNotFoundException, SQLException {
+		// felder befüllen aus datenbank
+		
 		Statement stmt = conn.createStatement();
 		String sql_query = "SELECT * FROM addressbook.address WHERE id = " + id;
 		ResultSet rs = stmt.executeQuery(sql_query);
@@ -70,12 +86,8 @@ public class Address {
 	 * 
 	 * @return true wenn erfolgreich gespeichert wurde, false bei Fehler
 	 */
-	public boolean save() {
+	public boolean save(Connection conn) {
 		try {
-
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			Connection conn = DriverManager
-					.getConnection("jdbc:mysql://localhost/addressbook?user=root&password=password");
 			Statement stmt = conn.createStatement();
 			String sql_query = "SELECT * FROM addressbook.address WHERE id = " + id;
 			ResultSet rs = stmt.executeQuery(sql_query);
@@ -132,6 +144,20 @@ public class Address {
 			return false;
 		}
 		return true;
+	}
+	
+	public boolean save() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Connection conn = DriverManager
+					.getConnection("jdbc:mysql://localhost/addressbook?user=root&password=password");
+			return save(conn);
+		} catch (InstantiationException e) {
+		} catch (IllegalAccessException e) {
+		} catch (ClassNotFoundException e) {
+		} catch (SQLException e) {
+		}
+		return false;
 	}
 
 	private void setPreparedStatementValues(PreparedStatement ps)
@@ -279,4 +305,5 @@ public class Address {
 	public String toString() {
 		return id + " " + name + " " + vorname;
 	}
+
 }
