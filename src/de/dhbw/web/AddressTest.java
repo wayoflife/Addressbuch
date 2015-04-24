@@ -1,31 +1,10 @@
 package de.dhbw.web;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import java.sql.Connection;
-
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
-import org.junit.Before;
 import org.junit.Test;
 
 public class AddressTest {
-	
-	private InitialContext context;
-	private DataSource ds;
-
-	@Before
-	public void prepare() {
-		try {
-			context = new InitialContext();
-			ds = (DataSource) context.lookup("java:comp/env/jdbc/MySQLDB");
-		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
 	@Test
 	public void geburtstagParsen() throws Exception {

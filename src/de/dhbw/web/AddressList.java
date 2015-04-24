@@ -1,7 +1,6 @@
 package de.dhbw.web;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,10 +25,8 @@ public class AddressList {
 		this.suchtext = suchtext;
 	}
 
-	public List<Address> getAddressListe() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		Connection conn = DriverManager
-				.getConnection("jdbc:mysql://localhost/addressbook?user=root&password=password");
+	public List<Address> getAddressListe() throws SQLException {
+		Connection conn = new AddressbuchConnectionPool().getConnection();
 		Statement stmt = conn.createStatement();
 		String sql_query = "SELECT * FROM addressbook.address WHERE name LIKE '%" + suchtext + "%'";
 		System.out.println(suchtext);
@@ -58,23 +55,16 @@ public class AddressList {
 		return addressListe;
 	}
 	
-	public void delete(int id, Connection conn) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public void delete(int id) throws SQLException{
 		
+		Connection conn = new AddressbuchConnectionPool().getConnection();
 		PreparedStatement ps = conn.prepareStatement("DELETE FROM address WHERE id = "+ id);
 		ps.execute();
 		
 		ps.close();
-	}
-	
-	public void delete(int id) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		Connection conn = DriverManager
-				.getConnection("jdbc:mysql://localhost/addressbook?user=root&password=password");
-
-		delete(id,conn);
-		
 		conn.close();
 	}
+	
 
 	public void setAdressListe(List<Address> adressListe) {
 		this.addressListe = adressListe;

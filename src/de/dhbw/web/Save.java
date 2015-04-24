@@ -1,35 +1,20 @@
 package de.dhbw.web;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.text.ParseException;
 
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 
 @WebServlet("/Save")
 public class Save extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private InitialContext context;
-	private DataSource ds;
-	private Connection conn;
-
 	public Save() {
 		super();
-		try {
-			context = new InitialContext();
-			ds = (DataSource) context.lookup("java:comp/env/jdbc/MySQLDB");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
 	}
 
 	protected void doGet(HttpServletRequest rq, HttpServletResponse rs)
@@ -68,8 +53,7 @@ public class Save extends HttpServlet {
 		ad.setStreet(rq.getParameter("street"));
 		ad.setVorname(rq.getParameter("vorname"));
 		try {
-			conn = ds.getConnection();
-			if (ad.save(conn)) {
+			if (ad.save()) {
 				String referer = "/Adressbuch/Detail.jsp?id=" + ad.getId();
 				System.out.println("Speichern erfolgreich: " + referer);
 				rs.sendRedirect(referer);
@@ -80,15 +64,6 @@ public class Save extends HttpServlet {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-		} finally {
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					// ignorieren, kann man nicht behandeln hier
-				}
-				conn = null;
-			}
 		}
 	}
 }
