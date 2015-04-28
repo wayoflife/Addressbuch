@@ -12,6 +12,14 @@ public class AddressTest {
 		ad.setBirthday("21.04.2015");
 		assertEquals("21.04.2015", ad.getBirthday());
 	}
+	
+	@Test
+	public void umlaute() throws Exception {
+		Address ad = new Address();
+		ad.read(1);
+		System.out.println(ad.getName());
+		assertEquals(true, true);
+	}
 
 	@Test
 	public void datenLaden() throws Exception {
