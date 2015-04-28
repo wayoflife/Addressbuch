@@ -14,7 +14,9 @@
 </head>
 <body>
 
-<h1>Unser supergeiles Addressbuch, yay</h1>
+<jsp:include page="Header.jsp" />
+
+<h2>Unser supergeiles Addressbuch, yay</h2>
 
 <%
 	List<Address> list = addressListKlasse.getAddressListe();

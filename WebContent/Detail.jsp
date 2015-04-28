@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<jsp:include page="Header.jsp" />
+
 <h2>Eingabeformular</h2>
 
 <%
