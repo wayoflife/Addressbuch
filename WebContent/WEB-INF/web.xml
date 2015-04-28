@@ -34,12 +34,24 @@
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>all</web-resource-name>
-			<url-pattern>/*</url-pattern>
-			<http-method>GET</http-method>
-			<http-method>POST</http-method>
+			<url-pattern>/List.jsp</url-pattern>
+			<url-pattern>/Detail.jsp</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>user</role-name>
+			<role-name>admin</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>all</web-resource-name>
+			<url-pattern>/Form.jsp</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
 			<role-name>admin</role-name>
 		</auth-constraint>
 		<user-data-constraint>
@@ -54,7 +66,7 @@
 	<login-config>
 		<auth-method>FORM</auth-method>
 		<form-login-config>
-			<form-login-page>/login.jsp</form-login-page>
+			<form-login-page>/Login.jsp</form-login-page>
 			<form-error-page>/login_error.html</form-error-page>
 		</form-login-config>
 	</login-config>
