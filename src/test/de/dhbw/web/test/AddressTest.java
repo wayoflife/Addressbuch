@@ -1,8 +1,11 @@
-package de.dhbw.web;
+package de.dhbw.web.test;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+
+import de.dhbw.web.Address;
+import de.dhbw.web.AddressList;
 
 public class AddressTest {
 	
