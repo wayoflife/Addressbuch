@@ -29,7 +29,7 @@ public class AddressList {
 		Connection conn = new AddressbuchConnectionPool().getConnection();
 		System.out.println(suchtext);
 		PreparedStatement ps = conn.prepareStatement("SELECT * FROM addressbook.address WHERE name LIKE ?");
-		ps.setString(1, "'%" + suchtext + "%'");
+		ps.setString(1, "%" + suchtext + "%");
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {
 			Address ad = new Address();
@@ -57,7 +57,8 @@ public class AddressList {
 	public void delete(int id) throws SQLException{
 		
 		Connection conn = new AddressbuchConnectionPool().getConnection();
-		PreparedStatement ps = conn.prepareStatement("DELETE FROM address WHERE id = "+ id);
+		PreparedStatement ps = conn.prepareStatement("DELETE FROM address WHERE id = ? ");
+		ps.setString(1, id+"");
 		ps.execute();
 		
 		ps.close();
