@@ -41,9 +41,9 @@
 		</tr>
 	<c:forEach items="${adressen}" var="ad">
 		<tr>
-			<td>${ad.vorname}</td>
-			<td>${ad.name}</td>
-			<td>${ad.email}</td>
+			<td><c:out value="${ad.vorname}"></c:out></td>
+			<td><c:out value="${ad.name}"></c:out></td>
+			<td><c:out value="${ad.email}"></c:out></td>
 			<td>
 				<form action="Detail.jsp" method="GET">
 					<button type="submit" name="id" value="${ad.id}">Detailansicht</button>

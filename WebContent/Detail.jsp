@@ -35,73 +35,73 @@
 		<tr>
 			<td>Anrede</td>
 			<td>
-				${ad.addressform}
+				<c:out value="${ad.addressform}"></c:out>
 			</td>
 		</tr>
 		<tr>
 			<td>Vorname</td>
 			<td>
-				${ad.vorname}
+				<c:out value="${ad.vorname}"></c:out>
 			</td>
 		</tr>
 		<tr>
 			<td>Nachname</td>
 			<td>
-				${ad.name}
+				<c:out value="${ad.name}"></c:out>
 			</td>
 		</tr>
 		<tr>
 			<td>E-Mail-Adresse</td>
 			<td>
-				${ad.email}
+				<c:out value="${ad.email}"></c:out>
 			</td>
 		</tr>
 		<tr>
 			<td>Straße</td>
 			<td>
-				${ad.street}
+				<c:out value="${ad.street}"></c:out>
 			</td>
 		</tr>
 		<tr>
 			<td>Hausnummer</td>
 			<td>
-				${ad.number}
+				<c:out value="${ad.number}"></c:out>
 			</td>
 		</tr>
 		<tr>
 			<td>Postleitzahl</td>
 			<td>
-				${ad.postcode}
+				<c:out value="${ad.postcode}"></c:out>
 			</td>
 		</tr>
 		<tr>
 			<td>Ort</td>
 			<td>
-				${ad.city}
+				<c:out value="${ad.city}"></c:out>
 			</td>
 		</tr>
 		<tr>
 			<td>Land</td>
 			<td>
-				${ad.country}
+				<c:out value="${ad.country}"></c:out>
 			</td>
 		</tr>
 		<tr>
 			<td>Festnetz</td>
 			<td>
-				${ad.phone}
+				<c:out value="${ad.phone}"></c:out>
 			</td>
 		</tr>
 		<tr>
 			<td>Handy</td>
 			<td>
-				${ad.mobile}
+				<c:out value="${ad.mobile}"></c:out>
 			</td>
 		</tr>
 		<tr>
 			<td>Geburtstag</td>
 			<td>
-				${ad.birthday}
+				<c:out value="${ad.birthday}"></c:out>
 			</td>
 		</tr>
 	</table>
