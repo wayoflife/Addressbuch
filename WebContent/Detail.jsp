@@ -107,7 +107,7 @@
 	</table>
 	
 	<c:choose>
-		<c:when test="${pageContext.request.isUserInRole('admin')}">
+		<c:when test="${pageContext.request.isUserInRole('admin') || pageContext.request.isUserInRole('admin7')}">
 			<form action="Form.jsp" method="GET">
 				<button type="submit" name="id" value="${ad.id}">Bearbeiten</button>
 			</form>

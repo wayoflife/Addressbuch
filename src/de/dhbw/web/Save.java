@@ -36,7 +36,7 @@ public class Save extends HttpServlet {
 			}
 			saveAdress(ad, rq, rs);
 			
-		} else if(rq.isUserInRole("ADMIN7")){
+		} else if(rq.isUserInRole("admin7")){
 			
 			String newPostcode = rq.getParameter("postcode");  
 			Address ad = new Address();

@@ -27,11 +27,10 @@ public class AddressList {
 
 	public List<Address> getAddressListe() throws SQLException {
 		Connection conn = new AddressbuchConnectionPool().getConnection();
-		Statement stmt = conn.createStatement();
-		String sql_query = "SELECT * FROM addressbook.address WHERE name LIKE '%" + suchtext + "%'";
 		System.out.println(suchtext);
-		System.out.println(sql_query);
-		ResultSet rs = stmt.executeQuery(sql_query);
+		PreparedStatement ps = conn.prepareStatement("SELECT * FROM addressbook.address WHERE name LIKE ?");
+		ps.setString(1, "'%" + suchtext + "%'");
+		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {
 			Address ad = new Address();
 			ad.setId(rs.getInt("id"));
@@ -50,7 +49,7 @@ public class AddressList {
 			addressListe.add(ad);
 		}
 		rs.close();
-		stmt.close();
+		ps.close();
 		conn.close();
 		return addressListe;
 	}

@@ -50,7 +50,7 @@
 				</form>
 			</td>
 			<c:choose>
-				<c:when test="${pageContext.request.isUserInRole('admin')}">
+				<c:when test="${pageContext.request.isUserInRole('admin') || pageContext.request.isUserInRole('admin7')}">
 					<td>
 						<form action="Delete" method="POST">
 							<button type="submit" name="id" value="${ad.id}">Löschen</button>
@@ -70,7 +70,7 @@
 <br>
 
 <c:choose>
-	<c:when test="${pageContext.request.isUserInRole('admin')}">
+	<c:when test="${pageContext.request.isUserInRole('admin') || pageContext.request.isUserInRole('admin7')}">
 		<form action="Form.jsp">
 			<input type="submit" value="Adresse hinzufügen">
 		</form>
