@@ -49,11 +49,15 @@
 					<button type="submit" name="id" value="${ad.id}">Detailansicht</button>
 				</form>
 			</td>
-			<td>
-				<form action="Delete" method="POST">
-					<button type="submit" name="id" value="${ad.id}">Löschen</button>
-				</form>
-			</td>
+			<c:choose>
+				<c:when test="${pageContext.request.isUserInRole('admin')}">
+					<td>
+						<form action="Delete" method="POST">
+							<button type="submit" name="id" value="${ad.id}">Löschen</button>
+						</form>
+					</td>
+				</c:when>
+			</c:choose>
 		</tr>
 	</c:forEach>
 	</table>
@@ -65,9 +69,13 @@
 
 <br>
 
-<form action="Form.jsp">
-	<input type="submit" value="Adresse hinzufügen">
-</form>
+<c:choose>
+	<c:when test="${pageContext.request.isUserInRole('admin')}">
+		<form action="Form.jsp">
+			<input type="submit" value="Adresse hinzufügen">
+		</form>
+	</c:when>
+</c:choose>
 
 </body>
 </html>

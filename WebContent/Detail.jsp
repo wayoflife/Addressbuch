@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Detailansicht</title>l
+	<title>Detailansicht</title>
 	<jsp:useBean id="adresse" class="de.dhbw.web.Address" scope="page"/>
 	<jsp:setProperty name="adresse" property="id" param="id"/>
 </head>

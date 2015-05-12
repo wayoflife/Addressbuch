@@ -28,7 +28,7 @@ public class Delete extends HttpServlet {
 
 	private void bearbeiteDelete(HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-		if (request.isUserInRole("ADMIN")) {
+		if (request.isUserInRole("admin")) {
 			try {
 				String attribute = request.getParameter("id");
 				System.out.println("parameter: " + attribute);
