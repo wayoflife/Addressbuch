@@ -27,6 +27,7 @@
 	</resource-ref>
 	
 	<security-role><role-name>admin</role-name></security-role>
+	<security-role><role-name>admin7</role-name></security-role>
 	<security-role><role-name>user</role-name></security-role>
 	
 	<security-constraint>
@@ -38,6 +39,7 @@
 		<auth-constraint>
 			<role-name>user</role-name>
 			<role-name>admin</role-name>
+			<role-name>admin7</role-name>
 		</auth-constraint>
 		<user-data-constraint>
 			<transport-guarantee>NONE</transport-guarantee>
@@ -51,6 +53,7 @@
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>admin</role-name>
+			<role-name>admin7</role-name>
 		</auth-constraint>
 		<user-data-constraint>
 			<transport-guarantee>NONE</transport-guarantee>
