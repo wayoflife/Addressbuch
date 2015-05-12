@@ -2,7 +2,6 @@ package de.dhbw.web;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +9,6 @@ import java.sql.Statement;
 import java.sql.Types;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
 
 public class Address {
 
@@ -37,9 +35,9 @@ public class Address {
 			IllegalAccessException, ClassNotFoundException, SQLException {
 		// felder befüllen aus datenbank
 		Connection conn = new AddressbuchConnectionPool().getConnection();
-		Statement stmt = conn.createStatement();
-		String sql_query = "SELECT * FROM addressbook.address WHERE id = " + id;
-		ResultSet rs = stmt.executeQuery(sql_query);
+		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM addressbook.address WHERE id = ? ");
+		stmt.setString(1, id+"");
+		ResultSet rs = stmt.executeQuery();
 		boolean geladen = false;
 		if (rs.next()) {
 			this.id = rs.getInt("id");
@@ -71,9 +69,9 @@ public class Address {
 	public boolean save() {
 		try {
 			Connection conn = new AddressbuchConnectionPool().getConnection();
-			Statement stmt = conn.createStatement();
-			String sql_query = "SELECT * FROM addressbook.address WHERE id = " + id;
-			ResultSet rs = stmt.executeQuery(sql_query);
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM addressbook.address WHERE id = ?");
+			stmt.setString(1, id+"");
+			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) {
 				PreparedStatement ps = conn.prepareStatement(
 						"UPDATE addressbook.address SET "
