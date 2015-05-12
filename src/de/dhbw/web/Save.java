@@ -29,7 +29,7 @@ public class Save extends HttpServlet {
 
 	private void bearbeiteSave(HttpServletRequest rq, HttpServletResponse rs)
 			throws IOException {
-		if (rq.isUserInRole("ADMIN")) {
+		if (rq.isUserInRole("admin")) {
 			Address ad = new Address();
 			if (rq.getParameter("id") != null && !rq.getParameter("id").isEmpty()) {
 				ad.setId(Integer.parseInt(rq.getParameter("id")));
