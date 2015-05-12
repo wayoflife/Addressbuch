@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Detailansicht</title>
+	<title>Detailansicht</title>l
 	<jsp:useBean id="adresse" class="de.dhbw.web.Address" scope="page"/>
 	<jsp:setProperty name="adresse" property="id" param="id"/>
 </head>
@@ -106,12 +106,16 @@
 		</tr>
 	</table>
 	
-	<form action="Form.jsp" method="GET">
-		<button type="submit" name="id" value="${ad.id}">Bearbeiten</button>
-	</form>
-	<form action="Delete" method="POST">
-		<button type="submit" name="id" value="${ad.id}">Löschen</button>
-	</form>
+	<c:choose>
+		<c:when test="${pageContext.request.isUserInRole('admin')}">
+			<form action="Form.jsp" method="GET">
+				<button type="submit" name="id" value="${ad.id}">Bearbeiten</button>
+			</form>
+			<form action="Delete" method="POST">
+				<button type="submit" name="id" value="${ad.id}">Löschen</button>
+			</form>
+		</c:when>
+	</c:choose>
 				
 	</c:when>
 	<c:otherwise>

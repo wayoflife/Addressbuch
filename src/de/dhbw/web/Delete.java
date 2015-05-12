@@ -28,23 +28,28 @@ public class Delete extends HttpServlet {
 
 	private void bearbeiteDelete(HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-		try {
-			String attribute = request.getParameter("id");
-			System.out.println("parameter: " + attribute);
-			int id = Integer.parseInt(attribute);
-			new AddressList().delete(id);
-			String referer = "/Adressbuch";
-			System.out.println("Eintrag wurde gelöscht, id: " + id);
-			System.out.println("Keine exception: " + referer);
-			response.sendRedirect(referer);
-		} catch (NumberFormatException ef) {
-			String referer = request.getHeader("Referer");
-			System.out.println("NumberFormatException: " + referer);
-			response.sendRedirect(referer);
-		} catch (Exception e) {
-			String referer = "/Adressbuch";
-			System.out.println("Sonstige Exception: " + referer);
-			response.sendRedirect(referer);
+		if (request.isUserInRole("ADMIN")) {
+			try {
+				String attribute = request.getParameter("id");
+				System.out.println("parameter: " + attribute);
+				int id = Integer.parseInt(attribute);
+				new AddressList().delete(id);
+				String referer = "/Adressbuch";
+				System.out.println("Eintrag wurde gelöscht, id: " + id);
+				System.out.println("Keine exception: " + referer);
+				response.sendRedirect(referer);
+			} catch (NumberFormatException ef) {
+				String referer = request.getHeader("Referer");
+				System.out.println("NumberFormatException: " + referer);
+				response.sendRedirect(referer);
+			} catch (Exception e) {
+				String referer = "/Adressbuch";
+				System.out.println("Sonstige Exception: " + referer);
+				response.sendRedirect(referer);
+			}
+		}
+		else {
+			response.sendRedirect("/Adressbuch");
 		}
 	}
 }
